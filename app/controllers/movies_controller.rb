@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 	end
     
     def new
+    	@movie = Movie.new
     end
 
     def edit
@@ -16,9 +17,13 @@ class MoviesController < ApplicationController
     def create
     	@movie = Movie.new(params.require(:movie).permit(:title, :description))
 
-    	@movie.save
+    	if @movie.save
     	redirect_to @movie
+        else 
+        	render 'new'
+        end 
     end
+
 
     def update
     end
