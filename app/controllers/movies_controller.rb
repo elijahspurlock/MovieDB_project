@@ -4,7 +4,10 @@ class MoviesController < ApplicationController
 
 	def show 
 	end
-
+    
+    def create
+    	render plain: params[:movie].inspect
+    end
 =begin	def mum
 	end	
 =end	
