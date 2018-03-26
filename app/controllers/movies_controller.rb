@@ -6,11 +6,16 @@ class MoviesController < ApplicationController
 	end
     
     def create
-    	render plain: params[:movie].inspect
+    @movie = Movie.new(params.require(:movie).permit(:title,:text))
+
+    @movie.save
+    redirect_to @movie
     end
-=begin	def mum
-	end	
-=end	
+
+    private
+    def movie_params
+    params.require(:movie).permit(:title, :text)
+    end	
 
 end
 
