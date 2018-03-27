@@ -11,23 +11,29 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test "can save a movie with a title" do
-  	movie = Movie.new(title: "I kill giants")
+  	movie = Movie.new(title: "I kill giants", description: "a"*10)
   	assert movie
   	assert movie.validate
   end
 
-  test "can save a movie with a title with a single character" do
-  	movie = Movie.new(title: "X" )
+  	 test "cannot save a movie with description less than 10" do
+  	movie = Movie.new(title: "I kill giants", description: "a"*9)
+  	assert movie
+  	assert !movie.validate
+  end
+
+  test "can save a movie with a title with a single character title" do
+  	movie = Movie.new(title: "X", description: "ksdddddddd")
   	assert movie.validate
   	assert_equal "X", movie.title, "can get the title"
   end
 
   test "can create a movie with a title and description" do
-    movie = Movie.new(title:"k", description:"ksdf")
+    movie = Movie.new(title:"k", description:"k"*10)
     assert movie.validate
   end 
 
-  test "can create a movie without a title but with description" do
+  test "cannot create a movie without a title but with description" do
     movie = Movie.new(description:"ksdf")
     assert !movie.validate
   end 
