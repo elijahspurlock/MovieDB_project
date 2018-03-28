@@ -9,6 +9,9 @@
 <% @movie.errors.full_messages.each do |msg| %>
 <li><%= msg %></li>
 <% end %>
+</ul>
+</div>
+<% end %>
 
 <p>
 <%= form.label :title %><br>
@@ -23,5 +26,4 @@
 <p>
 <%= form.submit %>
 </p>
-
 <% end %>
